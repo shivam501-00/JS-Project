@@ -27,3 +27,27 @@ btns.forEach((btn) => {
   });
 });
  ```
+
+ ### BMI calculater
+
+ ```javascript
+const form = document.querySelector('form');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const ht = parseInt(document.querySelector('#height').value);
+  const wt = parseInt(document.querySelector('#weight').value);
+  const result = document.querySelector('#results');
+
+  if (ht == '' || ht < 0 || isNaN(ht)) {
+    result.innerHTML = `Please define correct height`;
+  } else if (wt == '' || wt < 0 || isNaN(wt)) {
+    result.innerHTML = `Please define correct weight`;
+  } else {
+    const bmi = (wt / ((ht * wt) / 10000)).toFixed(2);
+    //show result
+    result.innerHTML = `<span>${bmi}</span>`;
+  }
+});
+ ```
