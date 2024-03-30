@@ -51,3 +51,15 @@ form.addEventListener('submit', (e) => {
   }
 });
  ```
+ ### Digital Clock
+
+```javascript
+  const clock = document.querySelector('#clock');
+// const date = new Date(); if we didn't add this in setInterval then it will not get updated for every sec
+
+setInterval(function () {
+  const date = new Date();
+  clock.innerHTML = date.toLocaleTimeString();
+}, 1000);
+
+```
