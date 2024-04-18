@@ -63,3 +63,33 @@ setInterval(function () {
 }, 1000);
 
 ```
+### Unlimited Color
+``` javascript
+const hexacolor = function () {
+  const hex = '0123456789ABCDEF';
+  let color = '#';
+
+  for (let i = 0; i < 6; i++) {
+    color += hex[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+let interval; //It can be defined inside ChangeColor function where it is initialized but it will not be accessible while stoping it.
+const startChangeColor = function () {
+  if (interval == null) {
+    interval = setInterval(changeColor, 1000);
+  }
+
+  function changeColor() {
+    document.body.style.backgroundColor = hexacolor();
+  }
+};
+const stopChangeColor = function () {
+  clearInterval(interval); //To stop changecolor function
+  interval = null;
+};
+
+document.querySelector('#start').addEventListener('click', startChangeColor);
+document.querySelector('#stop').addEventListener('click', stopChangeColor);
+
+```
