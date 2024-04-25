@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XMLHttp Request</title>
+  </head>
+  <style>
+    table,
+    th,
+    tr,
+    td {
+      border: 1px white solid;
+    }
+
+    #card {
+      height: 45%;
+      width: 50%;
+      border: 1px white solid;
+    }
+  </style>
+  <body style="background-color: #212121">
+    <h3 style="color: azure">readyState</h3>
+    <table style="color: aliceblue" width="50%">
+      <tr>
+        <th>value</th>
+        <th>state</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>UNSENT</td>
+        <td>Client has been created. open() not called yet.</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>OPENED</td>
+        <td>open() has been called.</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>HEADERS_RECEIVED</td>
+        <td>send() has been called, and headers and status are available.</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>LOADING</td>
+        <td>Downloading; responseText holds partial data.</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>DONE</td>
+        <td>The operation is complete.</td>
+      </tr>
+    </table>
+    <br />
+    <input type="button" value="Get card" id="card-btn" />
+    <div id="card" style="color: white">
+      <span id="followers" style="color: white"></span>
+      <img src="" alt="avatar" id="avatar" />
+    </div>
+  </body>
+  <!-- XMLHttp Request  -->
+  <script>
+    // First we create XML object
+    const requestURL = "https://api.github.com/users/hiteshchoudhary";
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("GET", requestURL);
+    //xhr.open need to get called using send method
+    xhr.send();
+    console.log(" confirm");
+
+    /*-----------------------------------------------------------------------------------------------*/
+    function xhrreadystate() {
+      // console.log(xhr.readyState);
+      let JSONdata = {};
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          console.log("four");
+          // let JSONdata;
+          const data = this.response; //as we are checking response for current execution we use "this" keyword for response
+          // console.log(typeof data); // what ever data we get from Http Request we get it in string we need to conver it to object in order to handle data
+          JSONdata = JSON.parse(data);
+          // console.log(typeof JSONdata);
+          // console.log(JSONdata.followers);
+         
+        } return JSONdata;
+        }
+    }
+    // xhrreadystate();
+    let JSONdt = xhrreadystate();
+    console.log(JSONdt);
+
+    // let avatarsrc= JSONdt.avatar_url;
+    // console.log(avatarsrc)
+    let pic = "https://avatars.githubusercontent.com/u/11613311?v=4";
+    const getcard_btn = document.querySelector("#card-btn");
+    const card = document.querySelector("#card");
+    const avatar = document.querySelector("#avatar");
+    getcard_btn.addEventListener("click", () => {
+      avatar.outerHTML = `<img src="${pic}" alt="avatar" id="avatar" style="height: 80px;width=100px"/> `;
+    });
+  </script>
+</html>
