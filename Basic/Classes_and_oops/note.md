@@ -15,10 +15,12 @@ Object literal
 - prototypes  
 - Classes
 - Instances (new, this )
+    * New keyword is used to create multiple instances/objects using single instance or object 
+    * this keyword is used to refer current context
 
 ## 4 Pillars
 
-Abstraction
-Encapsulation 
-Inheritance 
-Plymorphism
+- Abstraction
+- Encapsulation 
+- Inheritance 
+- Plymorphism
