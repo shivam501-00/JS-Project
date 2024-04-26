@@ -7,3 +7,18 @@
 - toLowerCase, toUpperCase
 
 ## Why use OOP
+## Parts of OOP
+
+Object literal 
+
+- constructor Function
+- prototypes  
+- Classes
+- Instances (new, this )
+
+## 4 Pillars
+
+Abstraction
+Encapsulation 
+Inheritance 
+Plymorphism
